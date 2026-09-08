@@ -49,7 +49,8 @@ COPY railway.conf /etc/nginx/sites-available/default
 # =========================
 COPY start-railway.sh /usr/local/bin/start-railway.sh
 
-RUN chmod +x /usr/local/bin/start-railway.sh
+RUN sed -i 's/\r$//' /usr/local/bin/start-railway.sh \
+    && chmod +x /usr/local/bin/start-railway.sh
 
 # Railway public HTTP port
 EXPOSE 8080
